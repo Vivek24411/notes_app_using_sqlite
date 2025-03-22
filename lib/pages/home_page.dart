@@ -11,7 +11,6 @@ class _HomePageState extends State<HomePage> {
  TextEditingController descController = TextEditingController();
  List<Map<String, dynamic>> allNotes = [];
  DBhelper? dbref;
- var errMsg = "";
 
  @override
  void initState() {
@@ -112,8 +111,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.pop(context);
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Please fill all details")));
                     }
-                    titleController.clear();
-                    descController.clear();
+
                     },
                     child: Text("Update"),
                     style: OutlinedButton.styleFrom(
@@ -173,6 +171,8 @@ class _HomePageState extends State<HomePage> {
      showModalBottomSheet(
       context: context,
       builder: (context) {
+       titleController.clear();
+       descController.clear();
        return Container(
         padding: EdgeInsets.all(11),
         width: double.infinity,
@@ -233,8 +233,7 @@ class _HomePageState extends State<HomePage> {
                 Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Please fill all details")));
                }
-               titleController.clear();
-               descController.clear();
+
               },
               child: Text("Add"),
               style: OutlinedButton.styleFrom(
